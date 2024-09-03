@@ -6,12 +6,13 @@
 # Dependencies: ffmpeg, ImageMagick
 
 # Define the video file name and the time interval between frames (in seconds)
-VIDEO_FILE="input_video.mp4"
-INTERVAL=1
+VIDEO_FILE="output_top_vid.mp4"
+INTERVAL=10
 
 # Create the frames directory if it doesn't exist
 mkdir -p frames
 mkdir -p masks
+mkdir -p debug
 
 # Extract frames from the video
 ffmpeg -i "$VIDEO_FILE" -vf "fps=1/$INTERVAL" frames/frame_%04d.png
@@ -21,12 +22,24 @@ cp frames/frame_0001.png output_image.png
 
 # Loop through all extracted frames
 for frame in frames/frame_*.png; do
-  # Create a mask for the drone (assuming the drone is the only moving object)
-  convert "$frame" -threshold 50% -negate masks/mask_$(basename "$frame")
+  # Non detailed way: no color masking, just normal masking
+  # convert "$frame" -threshold 50% -negate masks/mask_$(basename "$frame")
+
+  # Create a mask for the robot based on color ranges (basically see the changes in specific colors, to avoid erros where the background and robot color are similar)
+  convert "$frame" \
+    -fill white -fuzz 10% -opaque "rgb(15, 15, 15)" \
+    -fill white -fuzz 30% -opaque "rgb(255, 253, 94)" \
+    -fill white -fuzz 30% -opaque "rgb(253, 251, 249)" \
+    -fill black +opaque white \
+    masks/mask_$(basename "$frame")
 
   # Composite the masked drone onto the base image
   convert output_image.png "$frame" masks/mask_$(basename "$frame") -compose over -composite output_image.png
+
+  # Save the intermediate composited image for debugging
+  cp output_image.png debug/output_image_$(basename "$frame")
+
 done
 
 # Delete the frames and masks directories (optional)
-rm -rf frames masks
+# rm -rf frames masks debug
