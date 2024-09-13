@@ -1,0 +1,5 @@
+*.mp4
+*.png
+utils/video/debug/
+utils/video/frames/
+utils/video/masks/
