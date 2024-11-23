@@ -14,7 +14,14 @@ sudo apt install -y net-tools
 # Install compression tools
 sudo apt install -y zip unzip
 
-# Install additional packages as needed
+## Nice to have
+sudo apt install -y htop
+sudo apt install -y tree
+sudo apt install -y nvtop
+curl -LsSf https://astral.sh/uv/install.sh | sh
+sudo apt install python-is-python3
+sudo apt install python3-pip
+sudo apt install ffmpeg
 
 # Clean up
 sudo apt autoremove -y
