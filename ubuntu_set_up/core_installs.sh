@@ -17,7 +17,7 @@ sudo apt install -y zip unzip
 ## Nice to have
 sudo apt install -y htop
 sudo apt install -y tree
-sudo apt install -y nvtop
+# sudo apt install -y nvtop
 curl -LsSf https://astral.sh/uv/install.sh | sh
 sudo apt install python-is-python3
 sudo apt install python3-pip
