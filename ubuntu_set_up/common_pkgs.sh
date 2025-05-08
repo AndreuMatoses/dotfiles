@@ -7,4 +7,4 @@ sudo apt install vlc -y
 sudo apt install nvtop -y
 sudo apt install psensor -y
 # For clipboard history
-sudo apt install copyq
+sudo apt install copyq -y
