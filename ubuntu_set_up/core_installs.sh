@@ -8,7 +8,7 @@ sudo apt install -y build-essential git curl wget
 # Install common development tools
 sudo apt install -y gcc g++ make
 # Install text editors
-sudo apt install -y vim nano
+sudo apt install -y nano
 # Install network tools
 sudo apt install -y net-tools
 # Install compression tools
