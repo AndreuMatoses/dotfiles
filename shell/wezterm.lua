@@ -12,6 +12,9 @@ end
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Fira Code", "Noto Color Emoji" })
 config.font_size = 13.0
+-- Command palette colors (Tokyo Night style)
+config.command_palette_bg_color = "#1a1b26" -- Tokyo Night background
+config.command_palette_fg_color = "#c0caf5" -- Tokyo Night foreground
 
 -- Tab bar
 config.enable_tab_bar = true
