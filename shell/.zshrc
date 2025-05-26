@@ -97,9 +97,13 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="gedit ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="cd ~/.oh-my-zsh"
-alias tmuxconfig="gedit ~/.tmux.conf"
+alias tmuxconfig="nvim ~/.tmux.conf"
+alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
+
+# Start fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Start starship prompt
 eval "$(starship init zsh)"

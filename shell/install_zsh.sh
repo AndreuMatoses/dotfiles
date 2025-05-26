@@ -16,6 +16,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # # Modify the theme to show full path of current working directory
 # sed -i 's/DRACULA_DISPLAY_FULL_CWD=${DRACULA_DISPLAY_FULL_CWD:-0}/DRACULA_DISPLAY_FULL_CWD=${DRACULA_DISPLAY_FULL_CWD:-1}/' ${ZSH:-~/.oh-my-zsh}/themes/dracula/dracula.zsh-theme
 
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --key-bindings --completion --no-update-rc
+
 # Install Starship (prompt)
 curl -sS https://starship.rs/install.sh | sh
 
