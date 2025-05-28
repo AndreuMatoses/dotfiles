@@ -5,9 +5,21 @@
 # these masked frames onto a base image to create a final output image.
 # Dependencies: ffmpeg, ImageMagick
 
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <video_file> <interval_seconds>"
+    exit 1
+fi
+
 # Define the video file name and the time interval between frames (in seconds)
-VIDEO_FILE="output_top_vid.mp4"
-INTERVAL=10
+VIDEO_FILE="$1"
+INTERVAL="$2"
+
+# Check if the video file exists
+if [ ! -f "$VIDEO_FILE" ]; then
+    echo "Error: Video file '$VIDEO_FILE' not found."
+    exit 1
+fi
 
 # Create the frames directory if it doesn't exist
 mkdir -p frames
@@ -42,4 +54,4 @@ for frame in frames/frame_*.png; do
 done
 
 # Delete the frames and masks directories (optional)
-# rm -rf frames masks debug
+rm -rf frames masks debug
