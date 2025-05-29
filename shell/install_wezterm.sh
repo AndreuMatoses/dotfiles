@@ -27,3 +27,10 @@ sudo apt install wezterm -y
 mkdir -p ~/.config/wezterm
 ln -sf $(pwd)/wezterm.lua ~/.config/wezterm/wezterm.lua
 echo "WezTerm configuration file link has been created at ~/.config/wezterm/wezterm.lua."
+
+# Change the default keyboard shortcut to open wezterm instead
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Launch WezTerm'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'wezterm'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Control><Alt>t'
