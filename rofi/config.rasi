@@ -1,0 +1,7 @@
+@theme "catppuccin-default"
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  drun-display-format: "{icon} {name}";
+  font: "JetBrains Mono 12"; /* Adjust to your preferred font and size */
+}
